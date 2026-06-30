@@ -198,6 +198,61 @@
 
   .loading-spinner { text-align:center; padding:60px; color:var(--gris-medio); }
 
+  /* ===== RESPONSIVIDAD MÓVIL ===== */
+  /* Evita que cualquier elemento empuje el ancho de la página y obligue a scroll horizontal */
+  html, body { overflow-x:hidden; max-width:100%; }
+  * { box-sizing:border-box; }
+
+  @media (max-width: 640px) {
+    /* Encabezado institucional: apila logo, texto e insignias en vez de forzarlos en una fila */
+    .inst-header-inner { padding:14px 16px; gap:12px; justify-content:center; text-align:center; }
+    .inst-text { min-width:0; flex:1 1 100%; text-align:center; }
+    .inst-text h1 { font-size:12px; }
+    .escudo-img { width:56px; height:56px; }
+    .user-badge { flex:1 1 auto; text-align:center; font-size:11px; }
+    .semestre-badge { flex:1 1 auto; font-size:11px; padding:7px 12px; }
+
+    /* Navbar: deja de forzar padding lateral grande y reduce botones para que quepan o se acomoden en 2 líneas */
+    .navbar { padding:0 6px; justify-content:center; }
+    .navbar button { padding:10px 10px; font-size:11.5px; }
+    .navbar > div { width:100%; justify-content:center; margin-left:0 !important; padding:6px 0; }
+    .navbar > div button { font-size:11px; padding:6px 10px; }
+    #sync-status { display:none; } /* en pantallas chicas el detalle de hora sincronizada no es prioritario */
+
+    /* Contenido principal: reduce el padding lateral fijo que recortaba espacio útil */
+    .main { padding:14px 10px; }
+    .card { padding:16px; }
+
+    /* Formulario de actividades: todo a una sola columna y selectores que no se desbordan */
+    .form-row { grid-template-columns:1fr; }
+    .tipo-selector { grid-template-columns:1fr 1fr; }
+    .alcance-selector { grid-template-columns:1fr; }
+    .tipo-btn, .alcance-btn { font-size:11px; padding:9px 6px; }
+
+    /* Calendario mensual: celdas y textos más compactos, eventos truncados en vez de desbordar */
+    .cal-cell { min-height:62px; padding:4px; }
+    .cal-header div { font-size:9px; padding:8px 2px; letter-spacing:0; }
+    .day-num { width:20px; height:20px; font-size:11px; }
+    .cal-event { font-size:8.5px; padding:1px 3px; }
+    .cal-nav h2 { font-size:16px; }
+    .cal-nav-btn { padding:6px 10px; font-size:12px; }
+
+    /* Lista de actividades del panel: evita que las etiquetas largas empujen el ancho */
+    .actividad-meta { font-size:10.5px; gap:7px; }
+    .actividad-titulo { font-size:12.5px; }
+
+    /* Vista de impresión en pantalla (no en papel): tabla con scroll propio en vez de desbordar la página */
+    .print-header { flex-direction:column; text-align:center; padding:16px; }
+    .print-badge { margin-left:0; }
+    .print-table { display:block; overflow-x:auto; white-space:nowrap; }
+    .print-table th, .print-table td { font-size:11px; padding:7px 8px; }
+
+    /* Pantalla de login: logo y textos ajustados para no recortarse en pantallas angostas */
+    .login-card { padding:28px 20px; max-width:92vw; }
+    .login-card img { width:170px; height:170px; }
+    .login-card h1 { font-size:13px; }
+  }
+
   @media print {
     @page { size:A4; margin:14mm 12mm; }
     body { background:white; }
